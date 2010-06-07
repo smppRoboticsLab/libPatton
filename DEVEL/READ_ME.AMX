@@ -1,0 +1,34 @@
+This is a paramter description and experimental log file for subject:	
+Aaron Markworth	
+ID:	
+AMX	
+"COLLECTION DATE (month day, year): "	
+" april 4, 1998"	
+PROTOCOL: 	
+BOS Pilot pull	
+COLLECTED BY:	
+Patton	
+DATATYPES COLLECTED:  	
+"force plate, load cell, synch light channel, axles, BTS"	
+SEE THESE FILES FOR MORE INFO:	
+	
+	
+	
+NOTES:																																									
+"last had mild back pain in sept, 1997. Recurring from football injury."																																									
+																																									
+																																									
+
+A value of -8888 indiates information not avialable.  																																									
+A value of -9999 indiates bad or missing data.																																									
+All values in SI units unless otherwise noted. 																																									
+"ASCII codes are used for letters, but the line directly below should contian the letter.  This is to facilitate hdrload.m which will be used to read this data."																																									
+
+PARAMETERS IN THE NEXT 2 LINES (a line of names followed by a line of values -- best viewed & edited EXCEL):																																									
+ID_1	ID_2	ID_3	studyname_1	studyname_2	studyname_3	studyname_4	studyname_5	studyname_6	studyname_7	studyname_8	studyname_9	studyname_10	gender 	month collected	day collected	year collected	number of blocks	number of trials per block	age	glasses?	fitness level (0-1)	weightlifting?	back or shoulder pain?	cardiovascular or respiratory problems?	muscle strength compared to norm (0 to 1)	height(m)	mass(kg)	maxpull(N)	vert dist ank to sole (m)	vert elbow to ankle (m)	vert dist C7 to neck marker (m)	vert dist C7 to neck marker (m)	dist wrist to handle (m)	horiz dist ankle to back of FP (m)	horiz dist ankle to heel (m)	foot length (m)	BOS surface height (m)	BOS axle height (m)	BOS anterior axle to toe distance (m)	BOS posterior axle to toe distance (m)	number of markers
+65	77	88	66	79	83	32	80	73	76	79	84	32	109	4	2	98	 	10	20	1	1	1	1	0	0	1.7526	75	1051.6	0.066	1.07	-8888	-8888	-8888	0.231	0.056	0.265	0.0816	0.06424	0.1295	0.209	14
+A	M	X	B	O	S	 	P	I	L	O	T	 	m													69	165	80%=841.248	(estimated)	-8888				these  values can be calculated later…							
+Save this file in ascii format as read_me.AMX																										inches	pounds	60%=630.936		inches											
+																												50%=525.78													
+																												40%=420.624
+																												20%=210.312

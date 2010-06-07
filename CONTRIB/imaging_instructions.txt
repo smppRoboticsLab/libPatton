@@ -1,0 +1,96 @@
+Received: from relay.acns.nwu.edu by merle.acns.nwu.edu with ESMTP
+	(1.37.109.18/20.4) id AA014046202; Mon, 20 May 1996 16:03:22 -0500 Return-Path: <Jad_Succari@mathworks.com> Received: by relay.acns.nwu.edu
+	(1.37.109.18/20.4) id AA276776201; Mon, 20 May 1996 16:03:21 -0500 From: Jad_Succari@mathworks.com
+Received: from iguana.mathworks.com ([144.212.12.29]) by relay.acns.nwu.edu with ESMTP
+	(1.37.109.18/20.4) id AA276646198; Mon, 20 May 1996 16:03:18 -0500 Received: (from jsuccari@localhost) by iguana.mathworks.com (8.6.12/8.6.12) id RAA09044; Mon, 20 May 1996 17:03:12 -0400 Date: Mon, 20 May 1996 17:03:12 -0400
+Message-Id: <199605202103.RAA09044@iguana.mathworks.com> X-Ph: V3.12@relay
+To: j-patton@nwu.edu
+Subject: Image Formats
+
+Technical Support Reference Number: 38906
+
+Dear James,
+
+I am writing in regard to your recent technical query regarding reading in .bmp files into MATLAB.  They are two files on our ftp site called loadbmp.m and savebmp.m.  These 2 files are user-contributed m-files and, therefore, are not supported by The Mathworks.  If you have any questions regarding the m-files, please contact the authors directly.
+The files can be found at ftp.mathworks.com in the following directory:
+
+/pub/contrib/graphics
+
+I have also attached a Technical Note below that discusses the image formats the Image Processing toolbox can handle.
+
+________________________________________________________________________ 1209	Which Image/Graphics Formats Can MATLAB Read?
+Revision: 1.0
+
+Below is a list of functions that are available in the Image Processing Toolbox:
+
+     bmpread      Read a BMP (Microsoft Windows Bitmap) file from disk.
+
+     bmpwrite     Write a BMP (Microsoft Windows Bitmap) file to disk.
+
+     gifread      Read a GIF (Graphics Interchange Format) file from disk.
+
+     gifwrite     Write a GIF (Graphics Interchange Fromat) file to disk.
+
+     hdfpeek      List object tag/ref pairs in HDF file.
+
+     hdfread      Read data from HDF file.
+
+     hdfwrite     Write data to HDF file.
+
+     pcxread      Read a PCX (ZSoft Paint Format) file from disk.
+
+     pcxwrite     Write a PCX (ZSoft Paint Format) file to disk.
+
+     tiffread     Read a TIFF (Tagged Image File Format) file from disk.
+
+     tiffwrite    Write a TIFF (Tagged Image File Format) file to disk.
+
+     xwdread      Read a XWD (X window dump) file from disk.
+
+     xwdwrite     Write a XWD (X window dump) file to disk.
+
+
+In addition to these functions, MATLAB has two functions for reading and writing "raw" image files.  They are:
+
+     imread     Read from a "raw" image file
+
+     imwrite    Write a "raw" image file
+
+
+The "raw" image format is the format used by a program called Image Alchemy.  Image Alchemy is produced by a company named Handmade Software, Inc.  This program allows one to convert to and from many different formats, including TARGA, ADEX, FOP, EPS, GIF, Gem VDI, ILBM, Vivid IMG, JPEG, HP RTL, PBM, Stork, PALette, AutoLogic, Macintosh PICT, MTV, SGI, QDV, PCX, PCL, HSI Raw, Erdas Image, Sun RASter, Grasp, TIFF, QRT Raw, Utah RLE, Windows BMP, and WPG.
+
+	Handmade Software, Inc.
+	48820 Kato Road, Suite 110
+	Fremont, CA 94538
+	1-510-252-0101 Phone
+	1-510-252-0101 FAX
+	1-510-252-0929 BBS
+	1-510-252-0303 FAX-BACK
+	Internet:  support@handmadesw.com
+	CompuServe: 74774,2020
+
+EXAMPLE:
+
+     load clown
+     imwrite(X,map,'filename.raw')
+     % Convert it to GIF
+     !alchemy -g filename.raw filename.gif
+     % Convert from GIF to RAW format
+     !alchemy -r filename.gif filename2.raw
+     % Read it back into MATLAB and display
+     clear
+     [X,map] = imread('filename2.raw');
+     image(X)
+     colormap(map)
+
+
+
+If you have further questions regarding this issue, please be sure to mention the above Technical Support Reference Number in your e-mail response to me.
+
+Sincerely,
+
+Jad Succari
+Technical Support Engineer
+
+==================================================================== |  Announcing the Technical Support Solution Search Engine on our  | |                     World Wide Web home page                     | |------------------------------------------------------------------| | The MathWorks, Inc.           | email: support@mathworks.com     | | 24 Prime Park Way             | WWW  : http://www.mathworks.com  | | Natick, MA 01760-1500         | FTP  : ftp.mathworks.com         | | Phone: (508) 647-7000         | FAX  : (508) 647-7001            | |                               | TechFacts : (508) 647-7022       | |------------------------------------------------------------------| | 24-Hour Technical Solutions available by TechFacts, WWW, and FTP | ====================================================================
+

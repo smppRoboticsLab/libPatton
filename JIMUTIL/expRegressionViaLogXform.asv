@@ -1,0 +1,48 @@
+%% expRegressionViaLogXform: lssq regression of exponential decay using log
+%%%************** MATLAB "M" function  *************
+% Regression of an exponential function using a logarithm tranformation
+% then find necessary constatns to best-fit the date to function :
+%     f(x)=k1+k2*exp(-x/tau)
+% 
+% EXAMPLE:
+%         x=(0:400)'; tau=60, k1=12, k2=2, Nz=2; 
+%         y=k2+k1.*exp(-x./tau)+Nz*randn(size(x));  
+%         [k1,k2,tau]=expRegressionViaLogXform(x,y)
+%
+% REVISIONS:   3/9/08 (patton) initiated.
+%~~~~~~~~~~~~~~~~~~~~~ Begin : ~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+function  [k1,k2,tau]=expRegressionViaLogXform(x,y,nFinalPoionts,plotIt)
+
+%% setup
+len=size(x,1); 
+if ~exist('plotIt',var), plotIt=0; end
+if ~exist('nFinalPoionts',var), nFinalPoionts=round(len*.1); end
+
+%% FIT
+k2=mean(y(len-n:len)); 
+y2=y-k2+.01*k2; 
+
+% FIT
+[c]=fit(x,log(y2),'poly1'); 
+
+tau=-1/c.p1;
+k1=exp(c.p2);
+
+y=k2+k1.*exp(-x./tau); 
+
+%% PLOT
+if plotIt
+  clf; plot(x,y,'.'); hold on;
+
+  figure(2); clf;
+  plot(x,log(y2),'.');
+  hold on;
+  plot(x,(c.p1*x+c.p2),'r');
+  
+  figure(1); plot(x,y,'r');
+  orient tall;
+end
+
+return

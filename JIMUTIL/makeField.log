@@ -1,0 +1,71 @@
+
+ ~ makeField.m script: ~ 
+ ~ set_params.m script ~ Loading from "parameters.txt"..(cant open "parameters.txt.")  param not found! Use default: body_mass =
+   77.2727
+(cant open "parameters.txt.")  param not found! Use default: body_height =
+    1.7800
+(cant open "parameters.txt.")  param not found! Use default: uprArm_length =
+    0.3311
+(cant open "parameters.txt.")  param not found! Use default: forArm_len =
+    0.2599
+(cant open "parameters.txt.")  param not found! Use default: half_hand_len =
+    0.0961
+(cant open "parameters.txt.")  param not found! Use default: (cant open "parameters.txt.")  param not found! Use default: 
+ ~ setupCopycat.m script ~ CCB = 
+1x37 struct array with fields:
+    M
+    L
+    R
+    K
+    B
+    X
+    Y
+ ~ END setupCopycat.m script ~ 
+
+
+ params not varied! 
+
+sim_list = 
+  Columns 1 through 4
+    [1x20 char]    [1x31 char]    'Assistive field '    [1x33 char]
+  Columns 5 through 6
+    [1x30 char]    [1x29 char]
+ ~ Parameters defined. END set_params.m~ 
+
+
+ ~ setupCopycat.m script ~ CCB = 
+1x37 struct array with fields:
+    M
+    L
+    R
+    K
+    B
+    X
+    Y
+ ~ END setupCopycat.m script ~ 
+\nBaseline Ensembles:
+(cant open "parameters.txt.") (cant open "parameters.txt.") 
+ ~ ensembleTrials.m ~ 
+  4 Trials
+Trial:  13(cant open "parameters.txt.") (cant open "parameters.txt.")  !cant load FD-13.dat!  rho=NaN! 
+Averaging: 
+mean:Warning: One or more output arguments not assigned during call to 'cubestat'.
+> In C:\jim\researchProjects\field_design\mfiles\ensembleTrials.m at line 63
+  In C:\jim\researchProjects\field_design\mfiles\makeField.m at line 56
+
+Transform to Robot Coords and saving..Warning: Reference to uninitialized variable MEAN in ensembletrials at line 67.
+> In C:\jim\researchProjects\field_design\mfiles\ensembleTrials.m at line 67
+  In C:\jim\researchProjects\field_design\mfiles\makeField.m at line 56
+??? Index exceeds matrix dimensions.
+
+Error in ==> C:\jim\researchProjects\field_design\mfiles\ensembleTrials.m
+On line 67  ==> saveDataman(                                    ... % 6 columns (2pos,2vel,2force)
+
+Error in ==> C:\jim\researchProjects\field_design\mfiles\makeField.m
+On line 56  ==>     ensembleTrials(baseList,outName); 
+
+pwd
+ans =
+c:\jim\programs\mfiles\jimutil
+cd C:\jim\researchProjects\field_design\experiments\pilot23
+makeField

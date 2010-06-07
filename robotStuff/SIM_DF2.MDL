@@ -1,0 +1,1186 @@
+Model {
+  Name			  "sim_df2"
+  Version		  3.00
+  SimParamPage		  "Solver"
+  SampleTimeColors	  off
+  InvariantConstants	  off
+  WideVectorLines	  on
+  ShowLineWidths	  on
+  ShowPortDataTypes	  off
+  StartTime		  "0"
+  StopTime		  "tf"
+  SolverMode		  "SingleTasking"
+  Solver		  "ode45"
+  RelTol		  "tol"
+  AbsTol		  "tol"
+  Refine		  "1"
+  MaxStep		  "maxstep"
+  InitialStep		  "auto"
+  FixedStep		  "auto"
+  MaxOrder		  5
+  OutputOption		  "RefineOutputTimes"
+  OutputTimes		  "[]"
+  LoadExternalInput	  off
+  ExternalInput		  "[t, u]"
+  SaveTime		  off
+  TimeSaveName		  "tout"
+  SaveState		  off
+  StateSaveName		  "xout"
+  SaveOutput		  off
+  OutputSaveName	  "yout"
+  LoadInitialState	  off
+  InitialState		  "xInitial"
+  SaveFinalState	  off
+  FinalStateName	  "xFinal"
+  SaveFormat		  "Matrix"
+  LimitMaxRows		  off
+  MaxRows		  "1000"
+  Decimation		  "1"
+  AlgebraicLoopMsg	  "warning"
+  MinStepSizeMsg	  "warning"
+  UnconnectedInputMsg	  "warning"
+  UnconnectedOutputMsg	  "warning"
+  UnconnectedLineMsg	  "warning"
+  InheritedTsInSrcMsg	  "warning"
+  IntegerOverflowMsg	  "warning"
+  UnnecessaryDatatypeConvMsg "none"
+  Int32ToFloatConvMsg	  "warning"
+  SignalLabelMismatchMsg  "none"
+  ConsistencyChecking	  "off"
+  ZeroCross		  on
+  SimulationMode	  "normal"
+  BlockDataTips		  on
+  BlockParametersDataTip  on
+  BlockAttributesDataTip  off
+  BlockPortWidthsDataTip  off
+  BlockDescriptionStringDataTip	off
+  BlockMaskParametersDataTip off
+  ToolBar		  on
+  StatusBar		  on
+  BrowserShowLibraryLinks off
+  BrowserLookUnderMasks	  off
+  OptimizeBlockIOStorage  on
+  BufferReuse		  on
+  BooleanDataType	  off
+  RTWSystemTargetFile	  "grt.tlc"
+  RTWInlineParameters	  off
+  RTWRetainRTWFile	  off
+  RTWTemplateMakefile	  "grt_default_tmf"
+  RTWMakeCommand	  "make_rtw"
+  RTWGenerateCodeOnly	  off
+  ExtModeMexFile	  "ext_comm"
+  ExtModeBatchMode	  off
+  ExtModeTrigType	  "manual"
+  ExtModeTrigMode	  "oneshot"
+  ExtModeTrigPort	  "1"
+  ExtModeTrigElement	  "any"
+  ExtModeTrigDuration	  1000
+  ExtModeTrigHoldOff	  0
+  ExtModeTrigDelay	  0
+  ExtModeTrigDirection	  "rising"
+  ExtModeTrigLevel	  0
+  ExtModeArchiveMode	  "off"
+  ExtModeAutoIncOneShot	  off
+  ExtModeIncDirWhenArm	  off
+  ExtModeAddSuffixToVar	  off
+  ExtModeWriteAllDataToWs off
+  ExtModeArmWhenConnect	  off
+  Created		  "Fri Aug 06 15:37:53 1999"
+  UpdateHistory		  "UpdateHistoryNever"
+  ModifiedByFormat	  "%<Auto>"
+  LastModifiedBy	  "patton"
+  ModifiedDateFormat	  "%<Auto>"
+  LastModifiedDate	  "Thu May 04 20:06:16 2000"
+  ModelVersionFormat	  "1.%<AutoIncrement:32>"
+  ConfigurationManager	  "none"
+  BlockDefaults {
+    Orientation		    "right"
+    ForegroundColor	    "black"
+    BackgroundColor	    "white"
+    DropShadow		    off
+    NamePlacement	    "normal"
+    FontName		    "Helvetica"
+    FontSize		    10
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+    ShowName		    on
+  }
+  AnnotationDefaults {
+    HorizontalAlignment	    "center"
+    VerticalAlignment	    "middle"
+    ForegroundColor	    "black"
+    BackgroundColor	    "white"
+    DropShadow		    off
+    FontName		    "Helvetica"
+    FontSize		    10
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+  }
+  LineDefaults {
+    FontName		    "Helvetica"
+    FontSize		    9
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+  }
+  System {
+    Name		    "sim_df2"
+    Location		    [63, 110, 1158, 519]
+    Open		    on
+    ModelBrowserVisibility  off
+    ModelBrowserWidth	    200
+    ScreenColor		    "white"
+    PaperOrientation	    "landscape"
+    PaperPositionMode	    "auto"
+    PaperType		    "usletter"
+    PaperUnits		    "inches"
+    ZoomFactor		    "100"
+    AutoZoom		    on
+    ReportName		    "simulink-default.rpt"
+    Block {
+      BlockType		      SubSystem
+      Name		      "ANIMATION \n& halt detection"
+      Ports		      [3, 0, 0, 0, 0]
+      Position		      [970, 2, 1030, 308]
+      ForegroundColor	      "blue"
+      BackgroundColor	      "lightBlue"
+      ShowPortLabels	      on
+      System {
+	Name			"ANIMATION \n& halt detection"
+	Location		[1192, 144, 1571, 332]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	ZoomFactor		"100"
+	AutoZoom		on
+	Block {
+	  BlockType		  Inport
+	  Name			  "time"
+	  Position		  [45, 38, 75, 52]
+	  Port			  "1"
+	  PortWidth		  "-1"
+	  SampleTime		  "-1"
+	  DataType		  "auto"
+	  SignalType		  "auto"
+	  Interpolate		  on
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "posvelacc"
+	  Position		  [45, 73, 75, 87]
+	  Port			  "2"
+	  PortWidth		  "-1"
+	  SampleTime		  "-1"
+	  DataType		  "auto"
+	  SignalType		  "auto"
+	  Interpolate		  on
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "field force"
+	  Position		  [45, 108, 75, 122]
+	  Port			  "3"
+	  PortWidth		  "-1"
+	  SampleTime		  "-1"
+	  DataType		  "auto"
+	  SignalType		  "auto"
+	  Interpolate		  on
+	}
+	Block {
+	  BlockType		  MATLABFcn
+	  Name			  "animate:\nsim_anim.m"
+	  Position		  [230, 64, 280, 96]
+	  BackgroundColor	  "yellow"
+	  MATLABFcn		  "sim_anim"
+	  OutputWidth		  "0"
+	  OutputSignalType	  "auto"
+	}
+	Block {
+	  BlockType		  Mux
+	  Name			  "combine \nwith time1"
+	  Ports			  [3, 1, 0, 0, 0]
+	  Position		  [165, 25, 190, 135]
+	  Inputs		  "3"
+	  DisplayOption		  "none"
+	}
+	Line {
+	  SrcBlock		  "combine \nwith time1"
+	  SrcPort		  1
+	  DstBlock		  "animate:\nsim_anim.m"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "time"
+	  SrcPort		  1
+	  DstBlock		  "combine \nwith time1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "field force"
+	  SrcPort		  1
+	  DstBlock		  "combine \nwith time1"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "posvelacc"
+	  SrcPort		  1
+	  DstBlock		  "combine \nwith time1"
+	  DstPort		  2
+	}
+      }
+    }
+    Block {
+      BlockType		      Clock
+      Name		      "Clock"
+      Position		      [765, 27, 785, 43]
+      FontName		      "Arial"
+      DisplayTime	      off
+      Decimation	      "10"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "Constant"
+      Position		      [130, 176, 185, 194]
+      ShowName		      off
+      Value		      "Kact(1:4)"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "Constant1"
+      Position		      [130, 196, 185, 214]
+      ShowName		      off
+      Value		      "Bact(1:4)"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "Constant2"
+      Position		      [795, 68, 860, 82]
+      ShowName		      off
+      Value		      "endPt"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "Constant3"
+      Position		      [795, 93, 860, 107]
+      ShowName		      off
+      Value		      "speedThresh"
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "PLANT-ENVORIRONMENT:"
+      Ports		      [1, 2, 0, 0, 0]
+      Position		      [545, 135, 735, 210]
+      BackgroundColor	      "yellow"
+      ShowPortLabels	      on
+      System {
+	Name			"PLANT-ENVORIRONMENT:"
+	Location		[18, 132, 794, 457]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	ZoomFactor		"100"
+	AutoZoom		on
+	Block {
+	  BlockType		  Inport
+	  Name			  "control torques"
+	  Position		  [80, 90, 110, 110]
+	  NamePlacement		  "alternate"
+	  Port			  "1"
+	  PortWidth		  "-1"
+	  SampleTime		  "-1"
+	  DataType		  "auto"
+	  SignalType		  "auto"
+	  Interpolate		  on
+	}
+	Block {
+	  BlockType		  MATLABFcn
+	  Name			  "ENVIRONMENTAL FIELD:"
+	  Position		  [540, 120, 625, 160]
+	  ForegroundColor	  "blue"
+	  BackgroundColor	  "lightBlue"
+	  FontName		  "Arial"
+	  MATLABFcn		  "field4"
+	  OutputWidth		  "2"
+	  OutputSignalType	  "auto"
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "PLANT:"
+	  Ports			  [2, 1, 0, 0, 0]
+	  Position		  [155, 91, 305, 129]
+	  BackgroundColor	  "lightBlue"
+	  ShowPortLabels	  on
+	  System {
+	    Name		    "PLANT:"
+	    Location		    [830, 629, 1532, 1087]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    ZoomFactor		    "100"
+	    AutoZoom		    on
+	    Block {
+	      BlockType		      Inport
+	      Name		      "control torque"
+	      Position		      [30, 143, 60, 157]
+	      Port		      "1"
+	      PortWidth		      "-1"
+	      SampleTime	      "-1"
+	      DataType		      "auto"
+	      SignalType	      "auto"
+	      Interpolate	      on
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "field force"
+	      Position		      [30, 203, 60, 217]
+	      Port		      "2"
+	      PortWidth		      "-1"
+	      SampleTime	      "-1"
+	      DataType		      "auto"
+	      SignalType	      "auto"
+	      Interpolate	      on
+	    }
+	    Block {
+	      BlockType		      Integrator
+	      Name		      "I"
+	      Ports		      [1, 1, 0, 0, 0]
+	      Position		      [295, 140, 315, 160]
+	      ShowName		      off
+	      FontName		      "Arial"
+	      ExternalReset	      "none"
+	      InitialConditionSource  "internal"
+	      InitialCondition	      "ICs(:,2) "
+	      LimitOutput	      off
+	      UpperSaturationLimit    "inf"
+	      LowerSaturationLimit    "-inf"
+	      ShowSaturationPort      off
+	      ShowStatePort	      off
+	      AbsoluteTolerance	      "auto"
+	    }
+	    Block {
+	      BlockType		      MATLABFcn
+	      Name		      "PLANT:"
+	      Position		      [195, 133, 255, 167]
+	      ForegroundColor	      "blue"
+	      BackgroundColor	      "yellow"
+	      FontName		      "Arial"
+	      MATLABFcn		      "plant"
+	      OutputWidth	      "2"
+	      OutputSignalType	      "auto"
+	    }
+	    Block {
+	      BlockType		      Mux
+	      Name		      "combine\nkinematics"
+	      Ports		      [2, 1, 0, 0, 0]
+	      Position		      [480, 137, 505, 288]
+	      Inputs		      "2"
+	      DisplayOption	      "none"
+	    }
+	    Block {
+	      BlockType		      Mux
+	      Name		      "construct an\n input vector:\n[q's\nDq'"
+"s\nQ's]"
+	      Ports		      [3, 1, 0, 0, 0]
+	      Position		      [135, 60, 165, 240]
+	      Inputs		      "3"
+	      DisplayOption	      "none"
+	    }
+	    Block {
+	      BlockType		      Mux
+	      Name		      "construct state vect:\n[q's Dq's]"
+	      Ports		      [2, 1, 0, 0, 0]
+	      Position		      [415, 126, 440, 219]
+	      ForegroundColor	      "darkGreen"
+	      Inputs		      "2"
+	      DisplayOption	      "none"
+	    }
+	    Block {
+	      BlockType		      Integrator
+	      Name		      "integrate2"
+	      Ports		      [1, 1, 0, 0, 0]
+	      Position		      [360, 140, 380, 160]
+	      ShowName		      off
+	      FontName		      "Arial"
+	      ExternalReset	      "none"
+	      InitialConditionSource  "internal"
+	      InitialCondition	      "ICs(:,1)"
+	      LimitOutput	      off
+	      UpperSaturationLimit    "inf"
+	      LowerSaturationLimit    "-inf"
+	      ShowSaturationPort      off
+	      ShowStatePort	      off
+	      AbsoluteTolerance	      "auto"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "\nposvelacc"
+	      Position		      [550, 210, 580, 220]
+	      NamePlacement	      "alternate"
+	      Port		      "1"
+	      OutputWhenDisabled      "held"
+	      InitialOutput	      "0"
+	    }
+	    Line {
+	      SrcBlock		      "control torque"
+	      SrcPort		      1
+	      DstBlock		      "construct an\n input vector:\n[q's\nDq'"
+"s\nQ's]"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "construct an\n input vector:\n[q's\nDq'"
+"s\nQ's]"
+	      SrcPort		      1
+	      DstBlock		      "PLANT:"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "integrate2"
+	      SrcPort		      1
+	      DstBlock		      "construct state vect:\n[q's Dq's]"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "I"
+	      SrcPort		      1
+	      Points		      [15, 0]
+	      Branch {
+		DstBlock		"integrate2"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, 45]
+		DstBlock		"construct state vect:\n[q's Dq's]"
+		DstPort			2
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "PLANT:"
+	      SrcPort		      1
+	      Points		      [10, 0]
+	      Branch {
+		DstBlock		"I"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, 100]
+		DstBlock		"combine\nkinematics"
+		DstPort			2
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "construct state vect:\n[q's Dq's]"
+	      SrcPort		      1
+	      Points		      [10, 0]
+	      Branch {
+		DstBlock		"combine\nkinematics"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, -130; -355, 0; 0, 45]
+		DstBlock		"construct an\n input vector:\n[q's\nD"
+"q's\nQ's]"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "combine\nkinematics"
+	      SrcPort		      1
+	      DstBlock		      "\nposvelacc"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "field force"
+	      SrcPort		      1
+	      DstBlock		      "construct an\n input vector:\n[q's\nDq'"
+"s\nQ's]"
+	      DstPort		      3
+	    }
+	    Annotation {
+	      Position		      [277, 127]
+	      VerticalAlignment	      "top"
+	      ForegroundColor	      "blue"
+	      Text		      "DDq"
+	    }
+	    Annotation {
+	      Position		      [337, 127]
+	      VerticalAlignment	      "top"
+	      ForegroundColor	      "green"
+	      Text		      "Dq"
+	    }
+	    Annotation {
+	      Position		      [397, 127]
+	      VerticalAlignment	      "top"
+	      ForegroundColor	      "red"
+	      Text		      "q"
+	    }
+	    Annotation {
+	      Position		      [397, 172]
+	      VerticalAlignment	      "top"
+	      ForegroundColor	      "green"
+	      Text		      "Dq "
+	    }
+	    Annotation {
+	      Position		      [335, 112]
+	      VerticalAlignment	      "top"
+	      Text		      "INTEGRATORS:"
+	    }
+	    Annotation {
+	      Position		      [280, 32]
+	      VerticalAlignment	      "top"
+	      Text		      "State Feedback Vector"
+	    }
+	    Annotation {
+	      Position		      [95, 107]
+	      VerticalAlignment	      "top"
+	      Text		      "controller\ntorqe"
+	    }
+	    Annotation {
+	      Position		      [225, 182]
+	      VerticalAlignment	      "top"
+	      Text		      "function to calc \naccelerations \nfrom"
+" the states \nand the \ngeneralized \nforces \n(Q's) \n\"plant.m\""
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  Mux
+	  Name			  "[pos vel acc]\nfor \nactual, \nintended, \n"
+"and desired"
+	  Ports			  [3, 1, 0, 0, 0]
+	  Position		  [465, 93, 495, 187]
+	  Inputs		  "3"
+	  DisplayOption		  "none"
+	}
+	Block {
+	  BlockType		  FromWorkspace
+	  Name			  "qDesired\nFrom \nWorkspace"
+	  Position		  [355, 162, 440, 178]
+	  BackgroundColor	  "cyan"
+	  ShowName		  off
+	  VariableName		  "qD"
+	  SampleTime		  "0"
+	  Interpolate		  on
+	  HoldFinalValue	  off
+	}
+	Block {
+	  BlockType		  FromWorkspace
+	  Name			  "qIntended\nFrom \nWorkspace"
+	  Position		  [355, 132, 440, 148]
+	  BackgroundColor	  "cyan"
+	  ShowName		  off
+	  VariableName		  "qI"
+	  SampleTime		  "0"
+	  Interpolate		  on
+	  HoldFinalValue	  off
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "posvelacc"
+	  Position		  [680, 74, 715, 96]
+	  Port			  "1"
+	  OutputWhenDisabled	  "held"
+	  InitialOutput		  "0"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "field force"
+	  Position		  [680, 128, 715, 152]
+	  Port			  "2"
+	  OutputWhenDisabled	  "held"
+	  InitialOutput		  "0"
+	}
+	Line {
+	  SrcBlock		  "control torques"
+	  SrcPort		  1
+	  DstBlock		  "PLANT:"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "[pos vel acc]\nfor \nactual, \nintended, \n"
+"and desired"
+	  SrcPort		  1
+	  DstBlock		  "ENVIRONMENTAL FIELD:"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "PLANT:"
+	  SrcPort		  1
+	  Points		  [25, 0]
+	  Branch {
+	    DstBlock		    "[pos vel acc]\nfor \nactual, \nintended, "
+"\nand desired"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, -25]
+	    DstBlock		    "posvelacc"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "qDesired\nFrom \nWorkspace"
+	  SrcPort		  1
+	  DstBlock		  "[pos vel acc]\nfor \nactual, \nintended, \n"
+"and desired"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "qIntended\nFrom \nWorkspace"
+	  SrcPort		  1
+	  DstBlock		  "[pos vel acc]\nfor \nactual, \nintended, \n"
+"and desired"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "ENVIRONMENTAL FIELD:"
+	  SrcPort		  1
+	  Points		  [20, 0]
+	  Branch {
+	    Points		    [0, 125; -540, 0; 0, -145]
+	    DstBlock		    "PLANT:"
+	    DstPort		    2
+	  }
+	  Branch {
+	    DstBlock		    "field force"
+	    DstPort		    1
+	  }
+	}
+	Annotation {
+	  Position		  [280, 267]
+	  VerticalAlignment	  "top"
+	  ForegroundColor	  "blue"
+	  Text			  "Environment interaction force"
+	}
+	Annotation {
+	  Position		  [395, 97]
+	  VerticalAlignment	  "top"
+	  Text			  "q actual"
+	}
+	Annotation {
+	  Position		  [235, 142]
+	  VerticalAlignment	  "top"
+	  Text			  "calculate accelerations from the states and"
+" \nthe generalized forces (Q's) using \"PLANT.M\" \nalso includes \"PASSIVE.M"
+"\""
+	}
+	Annotation {
+	  Position		  [585, 172]
+	  VerticalAlignment	  "top"
+	  ForegroundColor	  "blue"
+	  Text			  "calc endpoint forces \nusing \"FIELD.M\""
+	}
+      }
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "STATE FEEDBACK CONTROLLER:"
+      Ports		      [4, 1, 0, 0, 0]
+      Position		      [220, 136, 380, 214]
+      BackgroundColor	      "yellow"
+      ShowPortLabels	      on
+      System {
+	Name			"STATE FEEDBACK CONTROLLER:"
+	Location		[791, 469, 1210, 743]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	ZoomFactor		"100"
+	AutoZoom		on
+	Block {
+	  BlockType		  Inport
+	  Name			  "posvelacc"
+	  Position		  [40, 33, 70, 47]
+	  Port			  "1"
+	  PortWidth		  "-1"
+	  SampleTime		  "-1"
+	  DataType		  "auto"
+	  SignalType		  "auto"
+	  Interpolate		  on
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "desired pos vel acc"
+	  Position		  [40, 73, 70, 87]
+	  Port			  "2"
+	  PortWidth		  "-1"
+	  SampleTime		  "-1"
+	  DataType		  "auto"
+	  SignalType		  "auto"
+	  Interpolate		  on
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "K matrix"
+	  Position		  [40, 113, 70, 127]
+	  Port			  "3"
+	  PortWidth		  "-1"
+	  SampleTime		  "-1"
+	  DataType		  "auto"
+	  SignalType		  "auto"
+	  Interpolate		  on
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "B matrix"
+	  Position		  [40, 153, 70, 167]
+	  Port			  "4"
+	  PortWidth		  "-1"
+	  SampleTime		  "-1"
+	  DataType		  "auto"
+	  SignalType		  "auto"
+	  Interpolate		  on
+	}
+	Block {
+	  BlockType		  MATLABFcn
+	  Name			  "FEEDBACK CONTROLLER:"
+	  Position		  [195, 85, 260, 115]
+	  ForegroundColor	  "red"
+	  BackgroundColor	  "yellow"
+	  FontName		  "Arial"
+	  MATLABFcn		  "control2"
+	  OutputWidth		  "2"
+	  OutputSignalType	  "auto"
+	}
+	Block {
+	  BlockType		  Mux
+	  Name			  "construct \na controller\n input vector:\n["
+"q's\nDq's\nci's]"
+	  Ports			  [4, 1, 0, 0, 0]
+	  Position		  [115, 15, 145, 185]
+	  Inputs		  "4"
+	  DisplayOption		  "none"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "feedback torques"
+	  Position		  [335, 93, 365, 107]
+	  Port			  "1"
+	  OutputWhenDisabled	  "held"
+	  InitialOutput		  "0"
+	}
+	Line {
+	  SrcBlock		  "construct \na controller\n input vector:\n["
+"q's\nDq's\nci's]"
+	  SrcPort		  1
+	  DstBlock		  "FEEDBACK CONTROLLER:"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "posvelacc"
+	  SrcPort		  1
+	  DstBlock		  "construct \na controller\n input vector:\n["
+"q's\nDq's\nci's]"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "desired pos vel acc"
+	  SrcPort		  1
+	  DstBlock		  "construct \na controller\n input vector:\n["
+"q's\nDq's\nci's]"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "K matrix"
+	  SrcPort		  1
+	  DstBlock		  "construct \na controller\n input vector:\n["
+"q's\nDq's\nci's]"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "B matrix"
+	  SrcPort		  1
+	  DstBlock		  "construct \na controller\n input vector:\n["
+"q's\nDq's\nci's]"
+	  DstPort		  4
+	}
+	Line {
+	  SrcBlock		  "FEEDBACK CONTROLLER:"
+	  SrcPort		  1
+	  DstBlock		  "feedback torques"
+	  DstPort		  1
+	}
+	Annotation {
+	  Position		  [230, 127]
+	  VerticalAlignment	  "top"
+	  ForegroundColor	  "red"
+	  Text			  "function to calc \ngeneralized forces \n(Q'"
+"s) from the states \nand the control \ninputs (ci's) \n\"control2.m\""
+	}
+      }
+    }
+    Block {
+      BlockType		      Sum
+      Name		      "Sum"
+      Ports		      [2, 1, 0, 0, 0]
+      Position		      [480, 117, 500, 353]
+      IconShape		      "rectangular"
+      Inputs		      "++"
+      SaturateOnIntegerOverflow	on
+    }
+    Block {
+      BlockType		      FromWorkspace
+      Name		      "feedforward torques\nFrom Workspace"
+      Position		      [15, 287, 120, 303]
+      BackgroundColor	      "cyan"
+      ShowName		      off
+      VariableName	      "Cff"
+      SampleTime	      "0"
+      Interpolate	      on
+      HoldFinalValue	      off
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "halt detection"
+      Ports		      [3, 0, 0, 0, 0]
+      Position		      [890, 61, 950, 139]
+      ForegroundColor	      "red"
+      BackgroundColor	      "lightBlue"
+      ShowPortLabels	      on
+      System {
+	Name			"halt detection"
+	Location		[1153, 169, 1563, 374]
+	Open			on
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	ZoomFactor		"100"
+	AutoZoom		on
+	Block {
+	  BlockType		  Inport
+	  Name			  "endPt"
+	  Position		  [45, 38, 75, 52]
+	  Port			  "1"
+	  PortWidth		  "-1"
+	  SampleTime		  "-1"
+	  DataType		  "auto"
+	  SignalType		  "auto"
+	  Interpolate		  on
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "speedThresh"
+	  Position		  [45, 83, 75, 97]
+	  Port			  "2"
+	  PortWidth		  "-1"
+	  SampleTime		  "-1"
+	  DataType		  "auto"
+	  SignalType		  "auto"
+	  Interpolate		  on
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "posvelacc"
+	  Position		  [45, 128, 75, 142]
+	  Port			  "3"
+	  PortWidth		  "-1"
+	  SampleTime		  "-1"
+	  DataType		  "auto"
+	  SignalType		  "auto"
+	  Interpolate		  on
+	}
+	Block {
+	  BlockType		  Stop
+	  Name			  "Stop Simulation"
+	  Position		  [335, 72, 370, 108]
+	  ForegroundColor	  "red"
+	}
+	Block {
+	  BlockType		  Mux
+	  Name			  "combine \nwith time1"
+	  Ports			  [3, 1, 0, 0, 0]
+	  Position		  [165, 21, 190, 159]
+	  Inputs		  "3"
+	  DisplayOption		  "none"
+	}
+	Block {
+	  BlockType		  MATLABFcn
+	  Name			  "stopDetection.m"
+	  Position		  [225, 74, 275, 106]
+	  BackgroundColor	  "yellow"
+	  MATLABFcn		  "stopDetection"
+	  OutputWidth		  "1"
+	  OutputSignalType	  "auto"
+	}
+	Line {
+	  SrcBlock		  "stopDetection.m"
+	  SrcPort		  1
+	  DstBlock		  "Stop Simulation"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "combine \nwith time1"
+	  SrcPort		  1
+	  DstBlock		  "stopDetection.m"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "posvelacc"
+	  SrcPort		  1
+	  DstBlock		  "combine \nwith time1"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "endPt"
+	  SrcPort		  1
+	  DstBlock		  "combine \nwith time1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "speedThresh"
+	  SrcPort		  1
+	  DstBlock		  "combine \nwith time1"
+	  DstPort		  2
+	}
+      }
+    }
+    Block {
+      BlockType		      FromWorkspace
+      Name		      "intended_joint_states\nFrom Workspace"
+      Position		      [15, 157, 125, 173]
+      BackgroundColor	      "cyan"
+      ShowName		      off
+      VariableName	      "intended_joint_states"
+      SampleTime	      "0"
+      Interpolate	      on
+      HoldFinalValue	      off
+    }
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "store \nfeedback \ntorques"
+      Position		      [430, 245, 470, 265]
+      Orientation	      "down"
+      BackgroundColor	      "cyan"
+      NamePlacement	      "alternate"
+      FontName		      "Arial"
+      VariableName	      "Cfb"
+      Buffer		      "10000"
+      Decimation	      "1"
+      SampleTime	      "0"
+      SaveFormat	      "Matrix"
+    }
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "store force"
+      Position		      [880, 260, 930, 280]
+      BackgroundColor	      "cyan"
+      FontName		      "Arial"
+      VariableName	      "force"
+      Buffer		      "10000"
+      Decimation	      "1"
+      SampleTime	      "0"
+      SaveFormat	      "Matrix"
+    }
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "store kinematics "
+      Position		      [880, 175, 930, 195]
+      BackgroundColor	      "cyan"
+      FontName		      "Arial"
+      VariableName	      "posvelacc"
+      Buffer		      "10000"
+      Decimation	      "1"
+      SampleTime	      "0"
+      SaveFormat	      "Matrix"
+    }
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "store net \ncontrol torque C"
+      Position		      [545, 290, 585, 310]
+      BackgroundColor	      "cyan"
+      FontName		      "Arial"
+      VariableName	      "C"
+      Buffer		      "10000"
+      Decimation	      "1"
+      SampleTime	      "0"
+      SaveFormat	      "Matrix"
+    }
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "store time"
+      Position		      [825, 25, 855, 45]
+      BackgroundColor	      "cyan"
+      NamePlacement	      "alternate"
+      FontName		      "Arial"
+      VariableName	      "time"
+      Buffer		      "10000"
+      Decimation	      "1"
+      SampleTime	      "0"
+      SaveFormat	      "Matrix"
+    }
+    Line {
+      SrcBlock		      "feedforward torques\nFrom Workspace"
+      SrcPort		      1
+      DstBlock		      "Sum"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Sum"
+      SrcPort		      1
+      Points		      [15, 0]
+      Branch {
+	Points			[0, -60]
+	DstBlock		"PLANT-ENVORIRONMENT:"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, 65]
+	DstBlock		"store net \ncontrol torque C"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "PLANT-ENVORIRONMENT:"
+      SrcPort		      1
+      Points		      [15, 0]
+      Branch {
+	Points			[0, -55; -560, 0; 0, 45]
+	DstBlock		"STATE FEEDBACK CONTROLLER:"
+	DstPort			1
+      }
+      Branch {
+	Points			[100, 0]
+	Branch {
+	  DstBlock		  "ANIMATION \n& halt detection"
+	  DstPort		  2
+	}
+	Branch {
+	  Points		  [0, 30]
+	  DstBlock		  "store kinematics "
+	  DstPort		  1
+	}
+	Branch {
+	  Points		  [0, -30]
+	  DstBlock		  "halt detection"
+	  DstPort		  3
+	}
+      }
+    }
+    Line {
+      SrcBlock		      "Constant"
+      SrcPort		      1
+      DstBlock		      "STATE FEEDBACK CONTROLLER:"
+      DstPort		      3
+    }
+    Line {
+      SrcBlock		      "Constant1"
+      SrcPort		      1
+      DstBlock		      "STATE FEEDBACK CONTROLLER:"
+      DstPort		      4
+    }
+    Line {
+      SrcBlock		      "intended_joint_states\nFrom Workspace"
+      SrcPort		      1
+      DstBlock		      "STATE FEEDBACK CONTROLLER:"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "STATE FEEDBACK CONTROLLER:"
+      SrcPort		      1
+      Points		      [65, 0]
+      Branch {
+	DstBlock		"Sum"
+	DstPort			1
+      }
+      Branch {
+	DstBlock		"store \nfeedback \ntorques"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "Constant2"
+      SrcPort		      1
+      DstBlock		      "halt detection"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Constant3"
+      SrcPort		      1
+      DstBlock		      "halt detection"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Clock"
+      SrcPort		      1
+      Points		      [10, 0]
+      Branch {
+	DstBlock		"store time"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, 20]
+	DstBlock		"ANIMATION \n& halt detection"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "PLANT-ENVORIRONMENT:"
+      SrcPort		      2
+      Points		      [15, 0; 0, 65; 100, 0]
+      Branch {
+	DstBlock		"ANIMATION \n& halt detection"
+	DstPort			3
+      }
+      Branch {
+	Points			[0, 15]
+	DstBlock		"store force"
+	DstPort			1
+      }
+    }
+    Annotation {
+      Position		      [127, 7]
+      VerticalAlignment	      "top"
+      Text		      "sim_df2.m (Patton)"
+      FontName		      "Arial"
+      FontSize		      20
+      FontWeight	      "bold"
+      FontAngle		      "italic"
+    }
+    Annotation {
+      Position		      [445, 87]
+      VerticalAlignment	      "top"
+      Text		      "Kinematics Feedback Vector (posvelacc)"
+    }
+    Annotation {
+      Position		      [665, 222]
+      VerticalAlignment	      "top"
+      Text		      "1) calc endpoint forces using \"FIELD.M\"      "
+"       \n2) calc accel using \"PLANT.M\" & \"PASSIVE.M\"\n3) integrate twice "
+"                                              "
+    }
+    Annotation {
+      Position		      [295, 227]
+      VerticalAlignment	      "top"
+      Text		      "torques, fcn of actual and \ndesired states use"
+"s \"control.m\""
+    }
+    Annotation {
+      Position		      [305, 282]
+      VerticalAlignment	      "top"
+      Text		      "Feedforward torque Cff"
+    }
+  }
+}

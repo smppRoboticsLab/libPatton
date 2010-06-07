@@ -1,0 +1,73 @@
+%************** MATLAB "M" function (jim Patton) *************
+% Figural error (average dist error forwards & backwards) betweeen 2 traj.
+% SYNTAX        FE=figural_error(a, b)   
+% INPUTS        Each tracetory a& b is a nx2 of [xpos ypos]  
+% REVISIONS:    2/22/99   (patton) took de.m (conditt) & enhanced comments ONLY
+%               2/7/2000  (patton) revised for resampling
+%~~~~~~~~~~~~~~~~~~~~~~ Begin Program: ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+function FE=figuralError(a,b,verbose,plot_or_not)
+
+%____ SETUP ____
+if ~exist('verbose'), verbose=1; end
+if ~exist('skip'), skip=1; end
+if ~exist('plot_or_not'), plot_or_not='n'; end
+if verbose, fprintf(' ~ figural_error.m ~ '); end
+
+%____ plot ____
+if plot_or_not=='y',
+  plot(a(:,1),a(:,2),'r.'); hold on;
+  plot(b(:,1),b(:,2),'b.'); hold on;
+  axis equal
+end  
+
+%____ a to b ____
+distance=[];
+for i=1:length(b),
+   for j=1:length(a),
+     distance(j)=sqrt((b(i,1)-a(j,1))^2 ...
+                    + (b(i,2)-a(j,2))^2);
+   end
+   [b_a_dist(i),j]=min(distance);
+   
+   if plot_or_not=='y',
+     plot([b(i,1) a(j,1)],            ...
+          [b(i,2) a(j,2)],'b');
+     hold on;
+   end  % if
+   %drawnow; pause(.01);
+end
+
+%____ b to a ____
+distance=[];
+for i=1:length(a),
+   for j=1:length(b),
+      distance(j)=sqrt((a(i,1)-b(j,1))^2 ...
+                     + (a(i,2)-b(j,2))^2);
+   end
+   [a_b_dist(i), j]=min(distance);
+   
+   if plot_or_not=='y',
+     plot([a(i,1) b(j,1)],            ...
+          [a(i,2) b(j,2)],'r')
+     hold on;
+   end  % if
+   %drawnow; pause(.01);
+end
+
+%____ average ____
+FE=(sum(b_a_dist) + sum(a_b_dist))/ ...
+   (length(a) + length(b));
+
+if verbose, fprintf('  ~ END figural_error.m ~ '); end
+
+
+
+%************** MATLAB "M" function (Patton) *************
+% resample trajectory so that it is evenly spaced in space.
+% SYNTAX          
+% INPUTS:      tracetory is a nx2 of [xpos ypos]  
+% REVISIONS:	 2/7/2000  Initiated by patton
+%~~~~~~~~~~~~~~~~~~~~~~ Begin Program: ~~~~~~~~~~~~~~~~~~~~~~~~~~
+

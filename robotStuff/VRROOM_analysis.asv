@@ -1,0 +1,208 @@
+%%************** MATLAB "M" fcn ************
+% batch file to Analyze data from VRROOM
+% SYNTAX:     analysis 
+% REVISIONS:  2007-06-25 (patton) INITIATED
+%~~~~~~~~~~~~~~~~~~~~~ Begin : ~~~~~~~~~~~~~~~
+
+function eTime=VRROOM_analysis(targFileName,dataFileName,plotSpec,fillColor)
+
+%% SETUP
+fcnName='VRROOM_analysis.m';
+fprintf('\n\n\n ~ %s ~',fcnName)
+% closeFigs
+figure(1); put_fig(1,.2,.01,.3,.96)
+figure(2); put_fig(2,.6,.15,.3,.8)
+if ~exist('plotSpec'), plotSpec='bo'; end
+if ~exist('fillColor'), fillColor='b'; end
+thresholdVelocity=.008;
+
+
+%% FILE CHECK
+if ~exist('targFileName'); 
+  [targFileName,targFilePathName]=uigetfile('*.txt', 'Choose Target File')
+end
+if ~exist('dataFileName'); 
+  [dataFileName,dataFilePathName]=uigetfile('*.txt', 'Choose Data File')
+end
+fprintf('\n Checking for files..')
+filesNeeded={targFileName,dataFileName};
+for i=1:length(filesNeeded); 
+	if ~exist(filesNeeded{i},'file'), 
+    fprintf('Missing: %s',filesNeeded{i}); 
+    error('  Halting analysis.  ')
+  end
+end
+fprintf('\n~ All files Found.')
+
+
+%% LOAD 
+fprintf('\n Loading targFile into mem..')
+[targHeader, targs] = hdrload(targFileName);
+fprintf('DONE. (%d row header, %d movement trials) ', size(targHeader,1), size(targs,1))
+
+fprintf('\n Loading dataFile into mem..')
+[dataHeader,data,Ntrials,eTime]=LoadAndRepairData(dataFileName,targs);  % load&ck
+fprintf('DONE. (%d row header, %d movement trials, %f minutes.)'...
+  , size(dataHeader,1), size(data,1), eTime)
+
+%% PROCESS TRIALS: 
+lastTime=data{1}(1,1); % init to initial time
+lastTrial=0; % init
+outData=[];
+fprintf('\n Trial:   ')
+for trialNum=1:size(dataHeader,1)
+  %  fprintf('\nTrial %d, ',trialNum)
+  fprintf('%d,',trialNum)
+  XYZ=data{trialNum}(:,2:4);
+  startTime=data{trialNum}(1,1);
+  endTime=data{trialNum}(size(data{trialNum},1),1);
+
+  i=0;
+  
+  i=i+1; measures(i).name='Length Ratio';
+  measures(i).values(trialNum)=straightness(XYZ);
+  
+  i=i+1; measures(i).name='Time Stationary (s)';  
+  measures(i).values(trialNum)=timeStationary(data{trialNum},thresholdVelocity);
+  
+  i=i+1; measures(i).name='Elapsed Time';
+  measures(i).values(trialNum)=endTime-startTime;
+  
+  i=i+1; measures(i).name='#Targets Per 2 Minute Intervals';
+  timeSince=endTime-lastTime;
+  if timeSince>2*60
+    measures(i).values(trialNum)=trialNum-lastTrial;
+    lastTrial=trialNum;
+    lastTime=endTime;
+%     fprintf('tic.')
+  elseif trialNum==1
+    measures(i).values(1)=0;
+  else
+    measures(i).values(trialNum)=measures(i).values(trialNum-1);
+  end
+%   i=i+1; measures(i).name='cumulativeTime';  
+%   measures(i).values(trialNum)=data{trialNum}(size(data{trialNum},1),1)-data{1}(1,1);
+  i=i+1; measures(i).name='rateTargetsPermin';  
+  measures(i).values(trialNum)=1/measures(i-2).values(trialNum)/60;
+  nMeasures=i;
+  
+  % plot measures
+  for i=1:nMeasures    
+    subplot(nMeasures,1,i); 
+    plot(trialNum,measures(i).values(trialNum),plotSpec,...
+      'markersize',3, 'MarkerFaceColor',fillColor); 
+    ylabel(measures(i).name);
+    hold on; 
+  end
+  xlabel('Trials')
+  
+  %% assemble output data matrix
+  dataRow=[];
+  for i=1:nMeasures, dataRow=[dataRow measures(i).values(trialNum)]; end
+  outData=[outData; dataRow]; 
+  
+  if round(trialNum/30)==trialNum/30, fprintf('\n'); drawnow; end % perodic <CR
+  
+end % END for trialNum
+
+%% assemble output file
+headerRow=''; % init
+for i=1:nMeasures, headerRow=[headerRow measures(i).name char(9)]; end
+mat2txt('performanceMeasures.txd',headerRow,outData)
+
+fprintf('\n\n~ END %s ~\n\n',fcnName)
+return
+
+
+%%************** MATLAB fcn ************
+% LoadAndRepairData: load & error-trap mistaken line(s) in file; calc eTime
+function [dataHeader,data,Ntrials,eTime]=LoadAndRepairData(dataFileName,targs)
+
+[dataHeader, data, Ntrials] = HDRLOADplus(dataFileName); % load
+if size(targs,1)~=size(data,1)
+  fprintf('\nNon-equal # targets in input and output: ')
+  i=1;
+  while i<size(data,1)
+    i=i+1;
+    if size(data{i},1)<3
+      fprintf(' Record %d is being removed. ', i)
+      data={data{1:i-1,:} data{i+1:size(data,1),:}}'; % this cuts out the record
+      dataHeader={dataHeader{1:i-1,:} dataHeader{i+1:size(dataHeader,1),:}}'; % this cuts out the record
+      Ntrials=Ntrials-1;
+    end
+  end
+  fprintf('\nDONE. (%d row header, %d movement trials) ', size(dataHeader,1), size(data,1))
+end
+eTime=(data{Ntrials}(size(data{Ntrials},1),1)-data{1}(1,1))/60;
+return
+
+%%************** MATLAB fcn ************
+%%% straightness: ratio of a cumulative path length to straight line.
+function lengthRatio=straightness(X)
+  
+  [M,N]=size(X);
+
+  % sum up path lenght for the movment
+  pathLength=0; % init  cd 
+  for row=2:M % loop for each time step
+    SS=0;
+    for col=1:N  % loop for each column
+      SS=SS+( X(row,col)-X(row-1,col) )^2;
+    end    
+    pathLength=pathLength+sqrt(SS);
+  end
+  
+  % find ideal length (dist from start to end point)
+  SS=0;
+  for col=1:N
+    SS=SS+( X(M,col)-X(1,col) )^2;
+  end
+  idealLength=sqrt(SS);
+  
+  lengthRatio=pathLength/idealLength;
+return
+
+%%************** MATLAB fcn ************
+%%% timeStationary: calc amount of time in a trial below threshold velocity 
+function ts=timeStationary(D,threshVelocity)
+
+  if ~exist('threshVelocity','var'), threshVelocity=.07; end % if~passed
+  
+  M     =size(D,1);                % find size
+  t     = D(:,1);                 % extract
+  xyz   = D(:,2:4);               % extract 
+  Hz    = 50;                     % resampling freq
+  cutoff= 8;                      % filter cutoff freq
+  filtOrder=5;                    % filter order
+  tU=(t(1):1/Hz:t(M))';           % uniform time 50 hz
+  xyzU=interp1(t,xyz,tU);         % resample
+  nSamples=length(tU);            % 
+  if nSamples>3*filtOrder;        % is enough samples
+    xyzFilt=butterx(xyzU,Hz ...   % filter
+      ,filtOrder,cutoff);         % 
+  else                            % otherwise
+    xyzFilt=xyzU;                 % just pass it through
+  end
+  [vel,acc]=dbl_diff(xyzFilt,Hz,0);% double differentiate (well)
+
+  % differentiate:
+  %dt=diff(t);  xyzDot=diff(xyz)./[dt dt dt];
+  %velocity=[xyzDot(1,:); xyzDot];% stack extra 2 equate overall length
+  speed = NaN*tU;                 % initialize
+  for row=1:nSamples              % loop for each time step
+   speed(row)=norm(vel(row,:));   % speed calc
+  end
+  
+%   size(tU),   size(vel),    size(acc),  size(speed)
+  
+  I=speed<threshVelocity;         % find which ones are below threshold
+  I(1)=[];                        % clip out to match the diff
+  ts=sum(I)/Hz;                   % add up all time steps (or divide by Hz)  
+  
+  % plot:
+%   figure(2); plot(tU-tU(1),speed);%  
+%   hold on; drawnow; figure(1);
+  
+return
+
+
